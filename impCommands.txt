@@ -1,0 +1,32 @@
+SELECT
+	order_items.id, customers.first_name, company_orders.date, company_orders.total_amount
+FROM
+	order_items
+LEFT JOIN 
+	company_orders
+	ON
+	company_orders.id = order_items.order_id
+LEFT JOIN
+	customers
+	ON
+    customers.id = company_orders.customer_id
+
+*******************************************************************************************************************************************
+
+SELECT
+	order_items.id, company_products.name
+FROM
+	order_items
+LEFT JOIN 
+	company_products
+	ON
+	company_products.id = order_items.product_id
+    
+*******************************************************************************************************************************************
+
+WITH query_1 AS (SELECT order_items.id as order_items_id, customers.first_name as customer_name, company_orders.date as date, company_orders.total_amount as amount FROM order_items LEFT JOIN company_orders ON company_orders.id=order_items.order_id LEFT JOIN customers ON customers.id=company_orders.customer_id), query_2 AS (SELECT order_items.id as order_items_id, company_products.name as product_name FROM order_items LEFT JOIN company_products ON company_products.id=order_items.product_id) SELECT query_1.customer_name, query_2.product_name, query_1.amount, query_1.date FROM query_1 JOIN query_2 ON query_1.order_items_id=query_2.order_items_id
+*******************************************************************************************************************************************
+email ID is - john.doe@gmail.com
+password='random' or 1=1 or
+*******************************************************************************************************************************************
+SELECT * FROM users WHERE email=’{}’ and password=’{}’;
